@@ -1,0 +1,36 @@
+PATH
+  remote: .
+  specs:
+    seametrix_ruby (0.1.0)
+      faraday (~> 1.3.0)
+      faraday_middleware (~> 1.0.0)
+      hashie (~> 4.1.0)
+      multi_json (>= 1.11.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    faraday (1.3.0)
+      faraday-net_http (~> 1.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
+    faraday-net_http (1.0.1)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
+    hashie (4.1.0)
+    minitest (5.14.4)
+    multi_json (1.15.0)
+    multipart-post (2.1.1)
+    rake (13.0.3)
+    ruby2_keywords (0.0.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  rake
+  seametrix_ruby!
+
+BUNDLED WITH
+   1.17.3

@@ -6,17 +6,15 @@ Gem::Specification.new do |spec|
   spec.authors       = ["adiwids"]
   spec.email         = ["adi.widyawan@bocistudio.com"]
 
-  spec.summary       = %q{}
-  spec.description   = %q{}
+  spec.summary       = %q{Ruby wrapper for Seametrix API}
+  spec.description   = %q{Ruby wrapper for Seametrix API}
   spec.homepage      = "https://www.bocistudio.com"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://gitlab.com/adiwids/seametrix_ruby.git"
-  spec.metadata["changelog_uri"] = "https://gitlab.com/adiwids/seametrix_ruby/CHANGELOG.md"
+  #spec.metadata["homepage_uri"] = spec.homepage
+  #spec.metadata["source_code_uri"] = ""
+  #spec.metadata["changelog_uri"] = ""
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -24,4 +22,12 @@ Gem::Specification.new do |spec|
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.require_paths = ["lib"]
+
+  # Dependencies
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'minitest'
+  spec.add_dependency 'faraday', '~>1.3.0'
+  spec.add_dependency 'faraday_middleware', '~>1.0.0'
+  spec.add_dependency 'multi_json', '>= 1.11.2'
+  spec.add_dependency 'hashie', '~> 4.1.0'
 end
