@@ -1,2 +1,3 @@
-require "seametrix_ruby/version"
+# frozen_string_literal: true
+
 require_relative "./seametrix"

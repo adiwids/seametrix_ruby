@@ -25,9 +25,11 @@ Gem::Specification.new do |spec|
 
   # Dependencies
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'minitest'
-  spec.add_dependency 'faraday', '~>1.3.0'
-  spec.add_dependency 'faraday_middleware', '~>1.0.0'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'webmock'
+
+  spec.add_dependency 'faraday', '~> 1.3.0'
+  spec.add_dependency 'faraday_middleware', '~> 1.0.0'
   spec.add_dependency 'multi_json', '>= 1.11.2'
   spec.add_dependency 'hashie', '~> 4.1.0'
 end

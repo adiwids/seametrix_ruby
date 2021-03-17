@@ -1,7 +1,12 @@
+# frozen_string_literal: true
+
 require 'faraday'
 require 'faraday_middleware'
-require_relative './seametrix_ruby/configuration'
-require_relative './seametrix_ruby/services/route'
+
+require 'seametrix_ruby/configuration'
+require 'seametrix_ruby/response/result_code'
+require 'seametrix_ruby/services/routes'
+require 'seametrix_ruby/services/ports'
 
 module Seametrix
   extend SeametrixRuby::Configuration
@@ -12,16 +17,16 @@ module Seametrix
 
   def self.request(path, method: :get, raw: false, params: {})
     options = { 'AccessKey' => access_key }
-    body = params.delete(:body)
 
     resp = connection(base_url, raw: raw).send(method) do |req|
       case method
       when :post
+        body = params.delete(:body)
         req.path = path
         req.params = options
         req.body = body.to_json if body
       else
-        req.url path, params.merge(options)
+        req.url path, options.merge(params.try(:[], :body) || params)
       end
     end
 
@@ -33,7 +38,7 @@ module Seametrix
       ssl: { verify: false },
       url: base_url,
       headers: {
-        'User-Agent' => "SeametrixRuby v0.1.0",
+        'User-Agent' => "SeametrixRuby #{SeametrixRuby::VERSION}",
         'Content-Type' => 'application/json',
         'Accept' => 'application/json'
       }
@@ -50,5 +55,7 @@ module Seametrix
     end
   end
 
-  Seametrix::Route = SeametrixRuby::Services::Route
+  Seametrix::Routes = SeametrixRuby::Services::Routes
+  Seametrix::Ports = SeametrixRuby::Services::Ports
+  Seametrix::ResultCode = SeametrixRuby::Responses::ResultCode
 end
