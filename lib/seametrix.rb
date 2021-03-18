@@ -47,7 +47,7 @@ module Seametrix
     Faraday::Connection.new(options) do |conn|
       conn.request :json
       conn.use Faraday::Request::UrlEncoded
-      conn.use Faraday::Response::Logger, logger || ::Logger.new(STDOUT), { bodies: true } if debugging
+      conn.use Faraday::Response::Logger, logger || ::Logger.new(STDOUT), { bodies: debugging }
       unless raw
         conn.use FaradayMiddleware::Mashify
         conn.use Faraday::Response::ParseJson
