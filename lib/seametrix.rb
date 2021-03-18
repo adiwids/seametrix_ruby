@@ -4,7 +4,7 @@ require 'faraday'
 require 'faraday_middleware'
 
 require 'seametrix_ruby/configuration'
-require 'seametrix_ruby/response/result_code'
+require 'seametrix_ruby/responses/result_code'
 require 'seametrix_ruby/services/routes'
 require 'seametrix_ruby/services/ports'
 
