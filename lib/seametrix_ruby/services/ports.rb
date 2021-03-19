@@ -14,6 +14,8 @@ module SeametrixRuby
       end
 
       def self.format(result)
+        raise ArgumentError.new("Unable to format empty response") unless result
+
         if result.is_a?(Array)
           result.map do |res|
             SeametrixRuby::Responses::PortResult.from_json(res.to_json)

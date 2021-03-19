@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'multi_json'
 require 'seametrix_ruby/models/port'
 
 module SeametrixRuby
@@ -13,7 +12,7 @@ module SeametrixRuby
       def initialize(attributes = {})
         @result_code = attributes[:result_code]
         @result_text = attributes[:result_text]
-        self.ports = attributes[:ports] || []
+        self.ports = attributes[:ports]
       end
 
       def self.from_json(json_string)
@@ -25,14 +24,23 @@ module SeametrixRuby
       end
 
 
-      def ports=(array_of_hash)
-        @ports = array_of_hash.map do |attrs|
-          port_attrs = {}
-          attrs.each do |key, value|
-            port_attrs[key.underscore] = value
-          end
+      def ports=(args)
+        return unless args
+        raise ArgumentError.new("Unsupported argument: #{args.class}") unless args.is_a?(Enumerable)
 
-          SeametrixRuby::Models::Port.new(port_attrs)
+        @ports = args.map do |arg|
+          if arg.is_a?(Hash)
+            port_attrs = {}
+            arg.each do |key, value|
+              port_attrs[key.underscore.to_sym] = value
+            end
+
+            SeametrixRuby::Models::Port.new(port_attrs)
+          elsif arg.is_a?(SeametrixRuby::Models::Port)
+            arg
+          else
+            raise ArgumentError.new("Unsupported argument: #{arg.class}")
+          end
         end
       end
     end

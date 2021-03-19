@@ -1,0 +1,11 @@
+{
+  "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "traceId": "|9e77af83-4c4ac485c86d1ebc.",
+  "errors": {
+      "$": [
+          "The JSON value could not be converted to SeametrixAPIPro.Models.RouteRequest[]. Path: $ | LineNumber: 1 | BytePositionInLine: 2."
+      ]
+  }
+}

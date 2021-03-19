@@ -2,6 +2,8 @@
 
 require 'faraday'
 require 'faraday_middleware'
+require 'multi_json'
+require 'active_support/core_ext/string'
 
 require 'seametrix_ruby/configuration'
 require 'seametrix_ruby/responses/result_code'
@@ -47,7 +49,7 @@ module Seametrix
     Faraday::Connection.new(options) do |conn|
       conn.request :json
       conn.use Faraday::Request::UrlEncoded
-      conn.use Faraday::Response::Logger, logger || ::Logger.new(STDOUT), { bodies: debugging }
+      conn.use Faraday::Response::Logger, logger, { bodies: debugging }
       unless raw
         conn.use FaradayMiddleware::Mashify
         conn.use Faraday::Response::ParseJson

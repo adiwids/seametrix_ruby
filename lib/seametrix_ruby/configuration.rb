@@ -20,7 +20,7 @@ module SeametrixRuby
     def reset
       self.base_url = DEFAULT_BASE_URL
       self.access_key = nil
-      self.logger = Logger.new(STDOUT)
+      self.logger = nil
       self.debugging = false
     end
   end

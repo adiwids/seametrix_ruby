@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'multi_json'
 require 'seametrix_ruby/models/waypoint'
 
 module SeametrixRuby
@@ -33,8 +32,24 @@ module SeametrixRuby
             waypoints: json['waypoints'])
       end
 
-      def waypoints=(array_of_hash)
-        @waypoints = array_of_hash.map { |attrs| SeametrixRuby::Models::Waypoint.new(attrs) }
+      def waypoints=(args)
+        return unless args
+        raise ArgumentError.new("Unsupported argument: #{args.class}") unless args.is_a?(Enumerable)
+
+        @waypoints = args.map do |arg|
+          if arg.is_a?(Hash)
+            wp_attrs = {}
+            arg.each do |key, value|
+              wp_attrs[key.underscore.to_sym] = value
+            end
+
+            SeametrixRuby::Models::Waypoint.new(wp_attrs)
+          elsif arg.is_a?(SeametrixRuby::Models::Waypoint)
+            arg
+          else
+            raise ArgumentError.new("Unsupported argument: #{arg.class}")
+          end
+        end
       end
     end
   end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'multi_json'
 require 'seametrix_ruby/models/waypoint'
 
 module SeametrixRuby
@@ -29,19 +28,19 @@ module SeametrixRuby
       end
 
       def longitude=(lon)
-        self[:longitude] = lon.to_f
+        @longitude = lon.to_f
         update_waypoint
       end
 
       def latitude=(lat)
-        self[:latitude] = lat.to_f
+        @latitude = lat.to_f
         update_waypoint
       end
 
       private
 
       def has_lat_lon?
-        latitude.present? && longitude.present?
+        latitude.is_a?(Numeric) && longitude.is_a?(Numeric)
       end
 
       def update_waypoint

@@ -1,0 +1,20 @@
+{
+  "resultCode": 1,
+  "resultText": "Success",
+  "ports": [
+      {
+          "portName": "Tampico / Ciudad Madero / Rio Panuco",
+          "country": "MEX",
+          "portCode": "MXTAM",
+          "longitude": -97.8169710313,
+          "latitude": 22.248705049
+      },
+      {
+          "portName": "Tuxpan / Rio Pantepec",
+          "country": "MEX",
+          "portCode": "MXTUX",
+          "longitude": -97.304845953,
+          "latitude": 20.9698374587
+      }
+  ]
+}

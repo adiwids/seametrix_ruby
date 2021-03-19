@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'multi_json'
-
 module SeametrixRuby
   module Models
     class Waypoint
