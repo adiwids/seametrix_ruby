@@ -28,7 +28,7 @@ RSpec.describe SeametrixRuby::Services::Routes do
 
       before do
         stub_post('/api/GetRoutes', body: route_requests.map(&:to_params).to_json)
-          .to_return(body: "[#{fixture('license_error_result', raw: true)}, #{fixture('license_error_result', raw: true)}]",
+          .to_return(body: "[#{fixture('license_error_result', raw: true)}]",
                      status: 200)
       end
 
