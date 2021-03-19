@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday_middleware', '~> 1.0.0'
   spec.add_dependency 'multi_json', '>= 1.11.2'
   spec.add_dependency 'hashie', '~> 4.1.0'
-  spec.add_dependency 'activesupport', '~> 5.2'
+  spec.add_dependency 'activesupport', '>= 5.2'
 end
