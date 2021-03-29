@@ -5,6 +5,7 @@ require 'faraday_middleware'
 require 'multi_json'
 require 'active_support/core_ext/string'
 
+require 'seametrix_ruby/version'
 require 'seametrix_ruby/configuration'
 require 'seametrix_ruby/responses/result_code'
 require 'seametrix_ruby/services/routes'
