@@ -24,16 +24,16 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Dependencies
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'webmock', '~> 3.12.1'
   spec.add_development_dependency 'simplecov', '>= 0.19.1'
 
-  spec.add_dependency 'faraday', '~> 1.3.0'
-  spec.add_dependency 'faraday_middleware', '~> 1.0.0'
+  spec.add_dependency 'faraday', '~> 1.0'
+  spec.add_dependency 'faraday_middleware', '~> 1.2.0'
   spec.add_dependency 'multi_json', '>= 1.11.2'
-  spec.add_dependency 'hashie', '~> 4.1.0'
-  spec.add_dependency 'activesupport', '>= 5.2'
+  spec.add_dependency 'hashie', '~> 5.0.0'
+  spec.add_dependency 'activesupport', '~> 6.1'
 end
